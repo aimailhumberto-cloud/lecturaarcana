@@ -121,7 +121,7 @@ export default function Catalogo() {
         {!loading && books.length > 0 && (
           <div className="catalogo-books-grid">
             {books.map(book => (
-              <div key={book.id} className="catalogo-book-card">
+              <Link key={book.id} to={`/libro/${book.id}`} className="catalogo-book-card">
                 <div className="catalogo-book-cover">
                   <img src={`${API_BASE}/api/books/${book.id}/cover`} alt={book.title} loading="lazy"
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
@@ -131,7 +131,7 @@ export default function Catalogo() {
                   {book.author && <p className="catalogo-book-author">{book.author}</p>}
                   <span className="catalogo-book-format">{book.format.toUpperCase()}</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

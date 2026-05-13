@@ -10,6 +10,7 @@ import Catalogo from './pages/Catalogo';
 import Narracion from './pages/Narracion';
 import Hermes from './pages/Hermes';
 import DerechosAutor from './pages/DerechosAutor';
+import BookPreview from './pages/BookPreview';
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/narracion" element={<Narracion />} />
           <Route path="/hermes" element={<Hermes />} />
           <Route path="/derechos-de-autor" element={<DerechosAutor />} />
+          <Route path="/libro/:id" element={<BookPreview />} />
         </Routes>
         
         <Footer />
