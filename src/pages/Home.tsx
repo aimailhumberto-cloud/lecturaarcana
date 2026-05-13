@@ -41,8 +41,8 @@ export default function Home() {
         <div className="container hero-content">
           <div className="hero-badge">✦ Club de Lectura Arcana ✦</div>
           <h1 className="hero-title">
-            Los libros no solo se leen.<br />
-            <span className="text-gold">Se conversan.</span>
+            El círculo de lectura más grande<br />
+            <span className="text-gold">del conocimiento oculto.</span>
           </h1>
           <p className="hero-subtitle">
             Únete a un club de lectura donde la Inteligencia Artificial te narra los libros,
