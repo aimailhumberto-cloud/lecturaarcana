@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight, BookOpen, Sparkles, MessageSquare, Upload, Users, FileText, Headphones, Search } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import HeroShelf from '../components/HeroShelf';
 import { APP_URL } from '../config';
 
@@ -19,6 +20,8 @@ const CATEGORIES = [
 ];
 
 export default function Home() {
+  const { t } = useTranslation();
+
   const handleLoginClick = () => {
     window.location.href = APP_URL;
   };
@@ -39,21 +42,20 @@ export default function Home() {
           ))}
         </div>
         <div className="container hero-content">
-          <div className="hero-badge">✦ Club de Lectura Arcana ✦</div>
+          <div className="hero-badge">{t('home.hero.badge')}</div>
           <h1 className="hero-title">
-            El círculo de lectura más grande<br />
-            <span className="text-gold">del conocimiento oculto.</span>
+            {t('home.hero.title_1')}<br />
+            <span className="text-gold">{t('home.hero.title_2')}</span>
           </h1>
           <p className="hero-subtitle">
-            Únete a un club de lectura donde la Inteligencia Artificial te narra los libros,
-            responde tus preguntas, genera informes y te conecta con una comunidad de lectores apasionados.
+            {t('home.hero.subtitle')}
           </p>
           <div className="hero-cta">
             <a href="#catalogo" className="btn-primary">
-              Explorar el Catálogo <ChevronRight size={20} />
+              {t('home.hero.cta_explore')} <ChevronRight size={20} />
             </a>
             <button className="btn-secondary" onClick={handleLoginClick}>
-              Ya soy miembro
+              {t('home.hero.cta_member')}
             </button>
           </div>
           <HeroShelf />
@@ -63,9 +65,9 @@ export default function Home() {
       {/* ── CATÁLOGO ── */}
       <section id="catalogo" className="catalog-section">
         <div className="container">
-          <h2 className="section-title text-center">Explora la inmensidad del conocimiento</h2>
+          <h2 className="section-title text-center">{t('home.catalog.title')}</h2>
           <p className="section-subtitle text-center">
-            46 categorías. 1,400+ obras. Contenido para toda una vida de descubrimiento.
+            {t('home.catalog.subtitle')}
           </p>
           <div className="categories-cloud">
             {CATEGORIES.map((cat, i) => (
@@ -78,23 +80,23 @@ export default function Home() {
               </Link>
             ))}
             <Link to="/catalogo" className="category-tag category-tag--featured">
-              Ver todo →
+              {t('home.catalog.see_all')}
             </Link>
           </div>
           <div className="catalog-stats">
             <div className="stat-item">
               <span className="stat-number">1,400+</span>
-              <span className="stat-label">Libros disponibles</span>
+              <span className="stat-label">{t('home.catalog.stat_books')}</span>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
               <span className="stat-number">46</span>
-              <span className="stat-label">Categorías</span>
+              <span className="stat-label">{t('home.catalog.stat_categories')}</span>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
               <span className="stat-number">95%</span>
-              <span className="stat-label">Con portada real</span>
+              <span className="stat-label">{t('home.catalog.stat_covers')}</span>
             </div>
           </div>
         </div>
@@ -103,32 +105,32 @@ export default function Home() {
       {/* ── EXPERIENCIA IA ── */}
       <section id="poderes" className="ai-section">
         <div className="container">
-          <h2 className="section-title text-center">Tu compañero de estudio con Inteligencia Artificial</h2>
+          <h2 className="section-title text-center">{t('home.ai.title')}</h2>
           <p className="section-subtitle text-center">
-            No es solo un lector de PDFs. Es una experiencia de lectura que nunca has tenido.
+            {t('home.ai.subtitle')}
           </p>
           <div className="ai-features-grid">
             <Link to="/narracion" className="ai-feature-card glass-panel ai-feature-card--link">
               <div className="ai-feature-icon"><Headphones size={28} /></div>
-              <h3>Narración Inteligente</h3>
-              <p>¿Conduciendo? ¿Meditando? Deja que la IA te narre cualquier libro completo. No necesitas esperar a que alguien lo grabe.</p>
-              <span className="feature-card-more">Descubrir más →</span>
+              <h3>{t('home.ai.narration_title')}</h3>
+              <p>{t('home.ai.narration_desc')}</p>
+              <span className="feature-card-more">{t('home.ai.discover_more')}</span>
             </Link>
             <Link to="/hermes" className="ai-feature-card glass-panel ai-feature-card--link">
               <div className="ai-feature-icon"><MessageSquare size={28} /></div>
-              <h3>Chatea con tus libros</h3>
-              <p>Pausa la lectura y pregúntale a Hermes AI sobre un concepto complejo. Responde al instante con contexto de la página.</p>
-              <span className="feature-card-more">Descubrir más →</span>
+              <h3>{t('home.ai.hermes_title')}</h3>
+              <p>{t('home.ai.hermes_desc')}</p>
+              <span className="feature-card-more">{t('home.ai.discover_more')}</span>
             </Link>
             <div className="ai-feature-card glass-panel">
               <div className="ai-feature-icon"><FileText size={28} /></div>
-              <h3>Informes y Resúmenes</h3>
-              <p>Extrae resúmenes, análisis y reportes detallados de cualquier obra en segundos. Perfecto para investigación.</p>
+              <h3>{t('home.ai.reports_title')}</h3>
+              <p>{t('home.ai.reports_desc')}</p>
             </div>
             <div className="ai-feature-card glass-panel">
               <div className="ai-feature-icon"><Search size={28} /></div>
-              <h3>Búsqueda Profunda</h3>
-              <p>Busca conceptos dentro de cualquier libro o a través de toda la biblioteca. Encuentra exactamente lo que necesitas.</p>
+              <h3>{t('home.ai.search_title')}</h3>
+              <p>{t('home.ai.search_desc')}</p>
             </div>
           </div>
         </div>
@@ -137,30 +139,30 @@ export default function Home() {
       {/* ── EL CLUB ── */}
       <section id="club" className="community-section">
         <div className="container">
-          <h2 className="section-title text-center">Más que una biblioteca.<br />Un Club de Lectura.</h2>
+          <h2 className="section-title text-center" dangerouslySetInnerHTML={{ __html: t('home.club.title') }}></h2>
           <p className="section-subtitle text-center">
-            Lee, comparte, debate y crece junto a una comunidad de lectores que piensa como tú.
+            {t('home.club.subtitle')}
           </p>
           <div className="community-grid">
             <div className="community-card">
               <div className="community-icon"><Users size={32} /></div>
-              <h3>Foro del Club</h3>
-              <p>Cada libro tiene su propio espacio de debate. Comparte tus descubrimientos, haz preguntas y conecta con otros lectores.</p>
+              <h3>{t('home.club.forum_title')}</h3>
+              <p>{t('home.club.forum_desc')}</p>
             </div>
             <div className="community-card">
               <div className="community-icon"><Upload size={32} /></div>
-              <h3>Sube tu Biblioteca</h3>
-              <p>Trae tus propios PDFs y EPUBs. Nuestra IA les dará vida: podrás escucharlos, chatear con ellos y generar informes.</p>
+              <h3>{t('home.club.upload_title')}</h3>
+              <p>{t('home.club.upload_desc')}</p>
             </div>
             <div className="community-card">
               <div className="community-icon"><Sparkles size={32} /></div>
-              <h3>Comparte y Gana</h3>
-              <p>¿Tienes un libro valioso? Compártelo con el club y recibe <strong>meses de acceso gratuito</strong> como recompensa.</p>
+              <h3>{t('home.club.share_title')}</h3>
+              <p dangerouslySetInnerHTML={{ __html: t('home.club.share_desc') }}></p>
             </div>
             <div className="community-card">
               <div className="community-icon"><BookOpen size={32} /></div>
-              <h3>Ediciones Físicas</h3>
-              <p>¿Prefieres el papel? Te conectamos con las mejores ediciones físicas de los libros que estás explorando.</p>
+              <h3>{t('home.club.physical_title')}</h3>
+              <p>{t('home.club.physical_desc')}</p>
             </div>
           </div>
         </div>
@@ -169,22 +171,22 @@ export default function Home() {
       {/* ── PRICING ── */}
       <section id="membresia" className="pricing-section">
         <div className="container text-center">
-          <h2 className="section-title">Únete al Club</h2>
-          <p className="section-subtitle">Sin planes confusos. Sin letra pequeña. Acceso total.</p>
+          <h2 className="section-title">{t('home.pricing.title')}</h2>
+          <p className="section-subtitle">{t('home.pricing.subtitle')}</p>
           <div className="pricing-card gold-glow">
-            <div className="pricing-badge">Membresía Completa</div>
-            <div className="pricing-price">$12<span className="pricing-cents">.99</span><span className="pricing-period">/mes</span></div>
+            <div className="pricing-badge">{t('home.pricing.badge')}</div>
+            <div className="pricing-price">$12<span className="pricing-cents">.99</span><span className="pricing-period">{t('home.pricing.period')}</span></div>
             <ul className="pricing-features">
-              <li><ChevronRight size={16} /> Acceso a más de 1,400 libros.</li>
-              <li><ChevronRight size={16} /> Narración por IA ilimitada.</li>
-              <li><ChevronRight size={16} /> Chat interactivo con Hermes AI.</li>
-              <li><ChevronRight size={16} /> Informes y resúmenes automáticos.</li>
-              <li><ChevronRight size={16} /> Sube tus propios libros.</li>
-              <li><ChevronRight size={16} /> Foro del Club de Lectura.</li>
-              <li><ChevronRight size={16} /> Gana meses gratis al compartir.</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f1')}</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f2')}</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f3')}</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f4')}</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f5')}</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f6')}</li>
+              <li><ChevronRight size={16} /> {t('home.pricing.f7')}</li>
             </ul>
             <button className="btn-primary full-width" onClick={handleLoginClick}>
-              Comenzar ahora <ChevronRight size={20} />
+              {t('home.pricing.cta')} <ChevronRight size={20} />
             </button>
           </div>
         </div>
@@ -193,17 +195,15 @@ export default function Home() {
       {/* ── YOUTUBE ── */}
       <section className="youtube-section">
         <div className="container text-center">
-          <h2 className="section-title">Escúchanos antes de decidir</h2>
+          <h2 className="section-title">{t('home.youtube.title')}</h2>
           <p className="section-subtitle">
-            Prueba la calidad de nuestra narración IA en YouTube. Gratis.
+            {t('home.youtube.subtitle')}
           </p>
           <div className="video-placeholder">
             <div className="play-btn">▶</div>
-            <p>El Kybalion — Audiolibro generado por IA</p>
+            <p>{t('home.youtube.video_text')}</p>
           </div>
-          <p className="youtube-cta">
-            ¿Te gustó la experiencia? Imagina poder <em>conversar</em> con ese libro.
-          </p>
+          <p className="youtube-cta" dangerouslySetInnerHTML={{ __html: t('home.youtube.cta') }}></p>
         </div>
       </section>
     </main>

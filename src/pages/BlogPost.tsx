@@ -1,19 +1,22 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Tag, ChevronRight } from 'lucide-react';
-import { BLOG_ARTICLES } from '../data/blogData';
+import { useTranslation } from 'react-i18next';
+import { getBlogArticles } from '../data/blogData';
 import { APP_URL } from '../config';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
-  const article = BLOG_ARTICLES.find(a => a.slug === slug);
+  const { t, i18n } = useTranslation();
+  const articles = getBlogArticles(i18n.language);
+  const article = articles.find(a => a.slug === slug);
 
   if (!article) {
     return (
       <main className="blog-post-page">
         <div className="container text-center" style={{ paddingTop: '10rem' }}>
-          <h1>Artículo no encontrado</h1>
+          <h1>{t('blog.not_found', 'Artículo no encontrado')}</h1>
           <Link to="/blog" className="btn-primary" style={{ marginTop: '2rem', display: 'inline-flex' }}>
-            Volver al Blog
+            {t('blog.back_to_blog', 'Volver al Blog')}
           </Link>
         </div>
       </main>
@@ -51,7 +54,7 @@ export default function BlogPost() {
     <main className="blog-post-page">
       <div className="container">
         <Link to="/blog" className="blog-back-link">
-          <ArrowLeft size={16} /> Volver al Blog
+          <ArrowLeft size={16} /> {t('blog.back_to_blog', 'Volver al Blog')}
         </Link>
 
         <article className="blog-article">
@@ -68,10 +71,10 @@ export default function BlogPost() {
           </div>
 
           <div className="blog-article-cta glass-panel">
-            <h3>¿Quieres explorar más sobre {article.category}?</h3>
-            <p>En nuestra biblioteca encontrarás decenas de obras sobre este tema, con narración por IA y chat interactivo.</p>
+            <h3>{t('blog.cta_title', '¿Quieres explorar más sobre')} {article.category}?</h3>
+            <p>{t('blog.cta_desc', 'En nuestra biblioteca encontrarás decenas de obras sobre este tema, con narración por IA y chat interactivo.')}</p>
             <button className="btn-primary" onClick={() => window.location.href = APP_URL}>
-              Explorar la Biblioteca <ChevronRight size={18} />
+              {t('blog.cta_btn', 'Explorar la Biblioteca')} <ChevronRight size={18} />
             </button>
           </div>
         </article>

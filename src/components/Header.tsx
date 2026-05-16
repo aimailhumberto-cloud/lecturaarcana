@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MoonStar, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { APP_URL } from '../config';
 
 export default function Header() {
@@ -8,6 +9,12 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language.startsWith('es') ? 'en' : 'es';
+    i18n.changeLanguage(newLang);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,20 +56,27 @@ export default function Header() {
           <nav className="nav-links nav-desktop">
             {isHome ? (
               <>
-                <Link to="/catalogo">Catálogo</Link>
-                <a href="#poderes">IA</a>
-                <a href="#club">El Club</a>
-                <Link to="/blog">Blog</Link>
+                <Link to="/catalogo">{t('header.catalog')}</Link>
+                <a href="#poderes">{t('header.ai')}</a>
+                <a href="#club">{t('header.club')}</a>
+                <Link to="/blog">{t('header.blog')}</Link>
               </>
             ) : (
               <>
-                <Link to="/">Inicio</Link>
-                <Link to="/catalogo">Catálogo</Link>
-                <Link to="/blog">Blog</Link>
+                <Link to="/">{t('header.home')}</Link>
+                <Link to="/catalogo">{t('header.catalog')}</Link>
+                <Link to="/blog">{t('header.blog')}</Link>
               </>
             )}
-            <button className="btn-login" onClick={handleLoginClick}>
-              Ingresar al Club
+            <button 
+              className="lang-switcher" 
+              onClick={toggleLanguage}
+              style={{ background: 'transparent', border: '1px solid var(--gold)', color: 'var(--gold)', padding: '0.4rem 0.8rem', borderRadius: '4px', cursor: 'pointer', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', marginLeft: '1rem' }}
+            >
+              {i18n.language.startsWith('es') ? 'EN' : 'ES'}
+            </button>
+            <button className="btn-login" onClick={handleLoginClick} style={{ marginLeft: '1rem' }}>
+              {t('header.login')}
             </button>
           </nav>
 
@@ -101,20 +115,31 @@ export default function Header() {
 
         <div className="mobile-drawer-links">
           <Link to="/" onClick={() => setMenuOpen(false)}>
-            Inicio
+            {t('header.home')}
           </Link>
           <Link to="/catalogo" onClick={() => setMenuOpen(false)}>
-            Catálogo
+            {t('header.catalog')}
           </Link>
           <Link to="/narracion" onClick={() => setMenuOpen(false)}>
-            Narración AI
+            {t('header.narration')}
           </Link>
           <Link to="/hermes" onClick={() => setMenuOpen(false)}>
-            Hermes AI
+            {t('header.hermes')}
           </Link>
           <Link to="/blog" onClick={() => setMenuOpen(false)}>
-            Blog
+            {t('header.blog')}
           </Link>
+          
+          <button 
+            onClick={toggleLanguage}
+            style={{ 
+              background: 'transparent', border: '1px solid var(--gold)', color: 'var(--gold)', 
+              padding: '0.8rem', borderRadius: '4px', cursor: 'pointer', fontFamily: 'var(--font-mono)', 
+              fontSize: '1rem', width: '100%', marginTop: '1rem', textAlign: 'center'
+            }}
+          >
+            Cambiar idioma / Change language ({i18n.language.startsWith('es') ? 'EN' : 'ES'})
+          </button>
         </div>
 
         <div className="mobile-drawer-footer">
@@ -122,12 +147,12 @@ export default function Header() {
             className="btn-primary full-width"
             onClick={() => { setMenuOpen(false); handleLoginClick(); }}
           >
-            Ingresar al Club
+            {t('header.login')}
           </button>
           <div className="mobile-drawer-legal">
-            <Link to="/terms" onClick={() => setMenuOpen(false)}>Términos</Link>
-            <Link to="/privacy" onClick={() => setMenuOpen(false)}>Privacidad</Link>
-            <Link to="/derechos-de-autor" onClick={() => setMenuOpen(false)}>DMCA</Link>
+            <Link to="/terms" onClick={() => setMenuOpen(false)}>{t('header.terms')}</Link>
+            <Link to="/privacy" onClick={() => setMenuOpen(false)}>{t('header.privacy')}</Link>
+            <Link to="/derechos-de-autor" onClick={() => setMenuOpen(false)}>{t('header.dmca')}</Link>
           </div>
         </div>
       </nav>

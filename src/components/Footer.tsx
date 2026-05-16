@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -9,15 +12,15 @@ export default function Footer() {
             Lectura <span>Arcana</span>
           </div>
           <div className="footer-links">
-            <Link to="/catalogo">Catálogo</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/terms">Términos</Link>
-            <Link to="/privacy">Privacidad</Link>
-            <Link to="/derechos-de-autor">Derechos de Autor</Link>
+            <Link to="/catalogo">{t('header.catalog')}</Link>
+            <Link to="/blog">{t('header.blog')}</Link>
+            <Link to="/terms">{t('header.terms')}</Link>
+            <Link to="/privacy">{t('header.privacy')}</Link>
+            <Link to="/derechos-de-autor">{t('header.dmca')}</Link>
           </div>
         </div>
         <div className="footer-bottom">
-          &copy; {new Date().getFullYear()} Club de Lectura Arcana. Donde los libros cobran vida.
+          &copy; {new Date().getFullYear()} {t('footer.bottom')}
         </div>
       </div>
     </footer>

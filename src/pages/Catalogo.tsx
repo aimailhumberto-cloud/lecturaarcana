@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { API_URL, APP_URL } from '../config';
 
 const API_BASE = API_URL;
@@ -23,6 +24,7 @@ interface Book {
 
 function CategoryCard({ cat }: { cat: Category }) {
   const [coverIds, setCoverIds] = useState<number[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch(`${API_BASE}/api/books?category_id=${cat.id}&limit=3`)
@@ -53,7 +55,9 @@ function CategoryCard({ cat }: { cat: Category }) {
       </div>
       <div className="category-card-text">
         <h3>{cat.name}</h3>
-        <span className="catalogo-count">{cat.book_count} {cat.book_count === 1 ? 'libro' : 'libros'}</span>
+        <span className="catalogo-count">
+          {cat.book_count} {cat.book_count === 1 ? t('catalogo.books_count') : t('catalogo.books_count_plural')}
+        </span>
       </div>
     </Link>
   );
@@ -65,6 +69,7 @@ export default function Catalogo() {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetch(`${API_BASE}/api/categories`)
@@ -93,12 +98,12 @@ export default function Catalogo() {
     return (
       <main className="catalogo-page">
         <div className="container">
-          <Link to="/" className="blog-back-link"><ArrowLeft size={16} /> Volver al inicio</Link>
+          <Link to="/" className="blog-back-link"><ArrowLeft size={16} /> {t('catalogo.back_home')}</Link>
           <h1 className="hero-title" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '0.5rem' }}>
-            Explora el Catálogo
+            {t('catalogo.explore_title')}
           </h1>
           <p className="section-subtitle" style={{ marginBottom: '3rem' }}>
-            46 senderos de conocimiento. Elige el tuyo.
+            {t('catalogo.explore_subtitle')}
           </p>
           <div className="catalogo-categories-grid">
             {categories.map(cat => <CategoryCard key={cat.id} cat={cat} />)}
@@ -111,12 +116,12 @@ export default function Catalogo() {
   return (
     <main className="catalogo-page">
       <div className="container">
-        <Link to="/catalogo" className="blog-back-link"><ArrowLeft size={16} /> Todas las categorías</Link>
+        <Link to="/catalogo" className="blog-back-link"><ArrowLeft size={16} /> {t('catalogo.all_categories')}</Link>
         <h1 className="hero-title" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', marginBottom: '0.5rem' }}>
           {selectedCategory?.name || decodeURIComponent(categoryName)}
         </h1>
         <p className="section-subtitle" style={{ marginBottom: '3rem' }}>
-          {loading ? 'Cargando...' : `${books.length} libros disponibles`}
+          {loading ? t('catalogo.loading') : `${books.length} ${t('catalogo.books_available')}`}
         </p>
         {!loading && books.length > 0 && (
           <div className="catalogo-books-grid">
@@ -137,15 +142,15 @@ export default function Catalogo() {
         )}
         {!loading && books.length === 0 && (
           <div className="text-center" style={{ padding: '4rem 0' }}>
-            <p style={{ color: 'var(--text-muted)' }}>No se encontraron libros en esta categoría.</p>
+            <p style={{ color: 'var(--text-muted)' }}>{t('catalogo.no_books')}</p>
           </div>
         )}
         <div className="catalogo-cta text-center" style={{ marginTop: '4rem' }}>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-            ¿Quieres leer estos libros, escucharlos con IA y chatear con Hermes?
+            {t('catalogo.cta_text')}
           </p>
           <button className="btn-primary" onClick={() => window.location.href = APP_URL}>
-            Ingresar al Club <ChevronRight size={18} />
+            {t('catalogo.cta_btn')} <ChevronRight size={18} />
           </button>
         </div>
       </div>
