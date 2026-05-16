@@ -1,12 +1,4 @@
-export interface BlogArticle {
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime: string;
-  content: string;
-}
+import type { BlogArticle } from './blogData';
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {

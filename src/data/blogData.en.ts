@@ -1,10 +1,10 @@
-import { BlogArticle } from './blogData';
+import type { BlogArticle } from './blogData';
 
 export const BLOG_ARTICLES_EN: BlogArticle[] = [
   {
     slug: 'what-is-sacred-geometry',
     title: 'What is Sacred Geometry and why does it matter?',
-    excerpt: 'From the Flower of Life to Metatron\\'s Cube, sacred geometry reveals hidden patterns that connect the entire universe. Discover why entire civilizations built temples based on these principles.',
+    excerpt: "From the Flower of Life to Metatron's Cube, sacred geometry reveals hidden patterns that connect the entire universe. Discover why entire civilizations built temples based on these principles.",
     category: 'Sacred Geometry',
     date: 'May 12, 2026',
     readTime: '8 min',
