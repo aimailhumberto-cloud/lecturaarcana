@@ -55,7 +55,9 @@
       "share_title": "Comparte y Gana",
       "share_desc": "¿Tienes un libro valioso? Compártelo con el club y recibe <strong>meses de acceso gratuito</strong> como recompensa.",
       "physical_title": "Ediciones Físicas",
-      "physical_desc": "¿Prefieres el papel? Te conectamos con las mejores ediciones físicas de los libros que estás explorando."
+      "physical_desc": "¿Prefieres el papel? Te conectamos con las mejores ediciones físicas de los libros que estás explorando.",
+      "mobile_title": "App Móvil PWA",
+      "mobile_desc": "Instala la biblioteca directamente en tu iPhone o Android. Accede a todo el conocimiento a pantalla completa, estés donde estés."
     },
     "pricing": {
       "title": "Únete al Club",

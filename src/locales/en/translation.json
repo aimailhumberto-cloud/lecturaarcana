@@ -55,7 +55,9 @@
       "share_title": "Share and Earn",
       "share_desc": "Got a valuable book? Share it with the club and get <strong>months of free access</strong> as a reward.",
       "physical_title": "Physical Editions",
-      "physical_desc": "Prefer paper? We connect you with the best physical editions of the books you're exploring."
+      "physical_desc": "Prefer paper? We connect you with the best physical editions of the books you're exploring.",
+      "mobile_title": "Mobile App PWA",
+      "mobile_desc": "Install the library directly on your iPhone or Android. Access all knowledge in full screen, wherever you go."
     },
     "pricing": {
       "title": "Join the Club",

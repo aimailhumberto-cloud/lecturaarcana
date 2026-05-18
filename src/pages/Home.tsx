@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ChevronRight, BookOpen, Sparkles, MessageSquare, Upload, Users, FileText, Headphones, Search } from 'lucide-react';
+import { ChevronRight, BookOpen, Sparkles, MessageSquare, Upload, Users, FileText, Headphones, Search, Smartphone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import HeroShelf from '../components/HeroShelf';
 import { APP_URL } from '../config';
@@ -158,6 +158,11 @@ export default function Home() {
               <div className="community-icon"><Sparkles size={32} /></div>
               <h3>{t('home.club.share_title')}</h3>
               <p dangerouslySetInnerHTML={{ __html: t('home.club.share_desc') }}></p>
+            </div>
+            <div className="community-card">
+              <div className="community-icon"><Smartphone size={32} /></div>
+              <h3>{t('home.club.mobile_title')}</h3>
+              <p>{t('home.club.mobile_desc')}</p>
             </div>
             <div className="community-card">
               <div className="community-icon"><BookOpen size={32} /></div>
