@@ -47,7 +47,7 @@ export default function BookPreview() {
     if (hasRefreshed || refreshing || !book) return;
     setRefreshing(true);
     try {
-      const res = await fetch(`${API_URL}/api/books/${book.id}/summary`, {
+      const res = await fetch(`${API_URL}/api/books/${book.id}/summary?marketing=true`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });
